@@ -1,74 +1,20 @@
-import React, { useState, ChangeEvent } from "react";
-import { Header, Image, Card, Segment, Input, Button } from "semantic-ui-react";
-import axios from 'axios';
+import React from "react";
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import "./App.css";
 import "semantic-ui-css/semantic.min.css";
 
-const SERVER_URI = 'http://localhost:4000/api/url'
+import Home from './Components/Home';
+import Redirection from "./Components/Redirection";
 
 const App: React.FC = () => {
-  const [urlToShorten, setUrlToShorten] = useState<string>('')
-  const [errorMsg, setErrorMsg] = useState<string>('')
-  const [urlShortened, setUrlShortened] = useState<string>('')
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    setUrlToShorten(e.target.value)
-  };
-
-  const shortenUrl = async () => {
-    return await axios
-    .post(SERVER_URI, {urlToShorten})
-    .then((response) => {
-      setErrorMsg('')
-      setUrlShortened(response.data)
-    })
-    .catch(err => {
-      setUrlShortened('')
-      setErrorMsg(err.response.data)
-    })
-  }
-  
   return (
-    <Segment id="cover" vertical textAlign="center">
-      <Header as="h1" id="title">
-        Knight <span style={{ color: "#c31d1d" }}>Shortener</span>
-      </Header>
-      <Image style={{ margin: "auto" }} src="https://i.imgur.com/uhBP596.png" />
-      <Card centered id="inputCard">
-        <Card.Content>
-          <Header as="h1" id="pageFont">
-            Paste the url to be shortened
-          </Header>
-          <Input
-            icon="paste"
-            size="large"
-            id="inputUrl"
-            iconPosition="left"
-            placeholder="Paste your url..."
-            onChange={handleChange}
-          />
-          <Button id="btn" size="big" onClick={shortenUrl}>
-            Shorten
-          </Button>
-          <Card.Description id="pageFont" style={{ marginTop: "15px" }}>
-            Use Knight Shortener to create a shortened link making it easy to
-            remember.
-          </Card.Description>
-          {
-            errorMsg ? (
-              <div className="ui error message">
-                {errorMsg}
-              </div>
-            ) : (
-              <div className="ui success message">
-                {urlShortened}
-              </div>
-            )
-          }
-        </Card.Content>
-      </Card>
-    </Segment>
-  );
-};
+    <div>
+      <Router>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/:code' component={Redirection} />
+      </Router>
+    </div>
+  )
+}
 
 export default App;

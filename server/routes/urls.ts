@@ -15,7 +15,7 @@ router.get("/:urlCode", async (req, res) => {
         .send("There is no webpage associated with that code 🤯");
     }
 
-    return res.redirect(url.realUrl);
+    return res.send(url.realUrl);
   } catch (err) {
     return res.status(500).send("Server Error 🤯");
   }

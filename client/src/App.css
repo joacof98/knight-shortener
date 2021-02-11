@@ -15,6 +15,11 @@
   font-family: 'Balsamiq Sans', cursive;
 }
 
+#responseInfo {
+  font-size: 15px;
+  font-family: 'Balsamiq Sans', cursive;
+}
+
 #inputCard {
   width: 700px;
   padding: 10px;
