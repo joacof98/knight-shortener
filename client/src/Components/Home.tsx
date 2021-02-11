@@ -2,7 +2,6 @@ import React, { useState, ChangeEvent } from "react";
 import { Header, Image, Card, Segment, Input, Button } from "semantic-ui-react";
 import axios from 'axios';
 import "../App.css";
-//import "semantic-ui-css/semantic.min.css";
 
 const SERVER_URI = 'http://localhost:4000/api/url'
 
@@ -62,7 +61,7 @@ const App: React.FC = () => {
           {urlShortened && (
             <div className="ui success message">
               <Header id="responseInfo">
-                Done! Use this code for your long url
+                Done! Use this code for your long url:
               </Header>
               <Header id='responseInfo' style={{marginTop: '10px', fontSize: '20px'}}>
                 {urlShortened}

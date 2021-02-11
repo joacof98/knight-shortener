@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams, Redirect } from "react-router-dom";
 import axios from "axios";
 
 const Redirection: React.FC = () => {
   const { code } = useParams<{ code: string }>();
   const SERVER_URI = `http://localhost:4000/api/url/${code}`;
-  const [error, setError] = useState<boolean>(false)
+  const history = useHistory();
 
   useEffect(() => {
     async function getRealUrl() {
@@ -15,7 +15,8 @@ const Redirection: React.FC = () => {
           window.location.href = response.data;
         })
         .catch((err) => {
-          setError(true);
+          // In case the code doesnt exists
+          history.push("/");
         });
     }
     getRealUrl();
