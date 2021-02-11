@@ -1,0 +1,32 @@
+#cover {
+  background-color: #ecf1f0;
+  height: auto;
+  min-height: 680px !important;
+}
+
+#pageFont {
+  font-family: 'Balsamiq Sans', cursive;
+}
+
+#title {
+  font-size: 40px;
+  margin-top: 50px !important;
+  margin: 0px;
+  font-family: 'Balsamiq Sans', cursive;
+}
+
+#inputCard {
+  width: 700px;
+  padding: 10px;
+}
+
+#inputUrl {
+  height: 45px;
+}
+
+#btn {
+  margin-left: 10px;
+  font-family: 'Balsamiq Sans';
+  background-color: #c31d1d;
+  color: white;
+}
